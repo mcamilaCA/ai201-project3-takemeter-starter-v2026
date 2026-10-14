@@ -394,3 +394,31 @@ learned:**
 ---
 
 📖 **How to run this project: [RUNNING.md](RUNNING.md)**
+
+# Miscelaneous
+```
+AI201 environment check
+------------------------------------------------------------
+[PASS] Python version
+         3.13.13 on Darwin
+[PASS] Virtual environment
+         /Users/camila/ai201-project3-takemeter-starter-v2026/.venv
+[PASS] Pinned packages
+         all 6 import cleanly
+[PASS] Free disk space
+         181.0 GB
+[PASS] Memory
+         16.0 GB
+[PASS] PyTorch
+         2.14.1, Apple Silicon GPU (MPS) — training will use it
+[PASS] Training packages
+         datasets and accelerate both import
+[PASS] Transformers
+         imports cleanly
+[WARN] Baseline model
+         Not downloaded yet (~1.6 GB). It downloads on your first run of
+         baseline.py. Do that BEFORE the unit 6 session, not during it.
+[PASS] Project files
+         notebook, scripts and practice data all present
+------------------------------------------------------------
+```
