@@ -54,34 +54,58 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `template`
 
 **Definition:**
-
+The post is a bot output or a list of links with no human writing
 **Example 1:**
->
+> "By: Norman Mailer | 721 pages | Published: 1948 | Popular Shelves: fiction, classics, war, historical-fiction, rory-gilmore-reading-challenge | )[^(Search "The Naked and the Dead by Norman Mailer")](https://www.goodreads.com/search?q=The Naked and the Dead by Norman Mailer&search_type=books"
 
 **Example 2:**
->
+> "By: A.C. Grayling | ? pages | Published: 2019 | Popular Shelves: philosophy, history, non-fiction, nonfiction, owned"
 
-### `label_two`
+### `book_centered`
 
 **Definition:**
-
+The text is mainly about a specific book or author, either what the post writer liked or as a recomendation
 **Example 1:**
->
+> "Just finished reading “chaos walking” and I am left in a void"
 
 **Example 2:**
->
+> "Paranormal Mystery Books like Ninth House by Leigh Bardugo"
+
+### `personal`
+
+**Definition:**
+The text is mainly about the writer's situations, age or feelings, names no specific book. 
+
+**Example 1:**
+> "I am 17 and I am terrified of growing up"
+
+**Example 2:**
+> "Book suggestions for someone who has a horrible relationship with their family"
+
+### `bare_ask`
+
+**Definition:**
+Generic request or reply with no named book, no personal story, and no bot formatting.
+
+**Example 1:**
+> "Looking for books with a chill summertime vibe"
+
+**Example 2:**
+> "Not sure what I’m looking for"
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:**  Book centered and Personal.
+**Reason:** They are not mutually exclusive, a post can give information about the writer and to mention a book they like, identify with, or don't like. 
+**Example:**  "I'm 17, I just finished Divergent, and I'm scared of growing up. What should I read next?"
 
 **The decision rule I used every time:**
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
-
+If the post mentions a specific book or author, it is book_centered, regardless of it providing personal information or not. Which is why personal is defined as The text is mainly about the writer's situations, age or feelings, names *no specific book*. 
 
 
 ---
@@ -91,10 +115,11 @@
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** Kaggle 
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+I labeled the first 30 to 40 and then AI finished the job. 
 
 **Counts per label:**
 

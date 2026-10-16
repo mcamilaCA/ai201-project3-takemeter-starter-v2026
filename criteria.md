@@ -51,19 +51,31 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. The F1 score of template has to be greater than 0.85, the rest's F1 should be more than 0.65
 
 <!-- Your criterion. It must name a number. -->
 
 
 
 **Why this target:**
-
+Template label has a very defined and visible structure, which makes it easier to detect, while other lables (personal, book_centered, and bare_ask) rely more on a judgement call. Moreover, I am expecting about 5 test examples in smallest labels, which is why they are more lenient.
 
 
 ---
 
-## 2.
+## 2. No label is above of 50% and no label is below 10%
+
+<!-- Your criterion. -->
+
+
+
+**Why this target:**
+With 200 rowns, there is a possibility of the data being unbalanced, especifically a label as defined as template. I want to be able to identify if there is an overall reasonable distribution of the labels and none terribly outweights the others. 
+
+
+---
+
+## 3. Overall accuracy of 75%
 
 <!-- Your criterion. -->
 
@@ -71,42 +83,31 @@ whether you hit them:
 
 **Why this target:**
 
+I want the model permission of being wrong to be reasonable. At first at was aiming at 90, but having in mind how some labels might not be represented with enough examples on the training set, O decided to make it so that the model is only allowed to miss 25% of the times at maximum
 
 
 ---
 
-## 3.
+## 4.  The trained model macro F1 beats baseliones by at least 0.10 on all seeds
 
 <!-- Your criterion. -->
 
 
 
 **Why this target:**
-
+I want to couble check the changes after fine tunning the model. Having 200 rows and four labels, a baseline can do a good job, and having a model that performs the same does not add up value. 
 
 
 ---
 
-## 4.
+## 5. Template recall is al least 0.7 on every seed
 
 <!-- Your criterion. -->
 
 
 
 **Why this target:**
-
-
-
----
-
-## 5.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
+template is the rarest of the labels, and the comments are about 9% of the whole rows, and hence could be ignored by a model and still have a high accuracy even after performing poorly on tehg least represented label (in this case threshold is 75% as per criterion 3) 
 
 
 ---

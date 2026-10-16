@@ -1627,7 +1627,7 @@ Score: median 2, mean 9.4, max 569.
 
 > [**The Naked and the Dead**](https://www.goodreads.com/book/show/12467.The_Naked_and_the_Dead)
 >
-> ^(By: Norman Mailer | 721 pages | Published: 1948 | Popular Shelves: fiction, classics, war, historical-fiction, rory-gilmore-reading-challenge | )[^(Search "The Naked and the Dead by Norman Mailer")](https://www.goodreads.com/search?q=The Naked and the Dead by Norman Mailer&search_type=books)
+> 
 >
 > ^(This book has been suggested 4 times)
 >
