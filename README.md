@@ -109,6 +109,15 @@ Generic request or reply with no named book, no personal story, and no bot forma
      if the tone is heated." -->
 If the post mentions a specific book or author, it is book_centered, regardless of it providing personal information or not. Which is why personal is defined as The text is mainly about the writer's situations, age or feelings, names *no specific book*. 
 
+### Stretch feature: a fourth label (`bare_ask`)
+
+The core taxonomy needs three labels (`template`, `book_centered`, `personal`). As a stretch, I added `bare_ask` as a fourth: a generic request or reply with no named book, no personal story and no bot formatting. It catches posts the other three cannot hold, such as "Looking for books with a chill summertime vibe", taste-only requests, and "help me find this book" posts with no title.
+
+Adding it made the task harder in three ways:
+- It adds boundaries with the other labels: `bare_ask` vs `personal` (gift requests count as `personal` when they give concrete details about the other person, taste alone stays `bare_ask`) and `bare_ask` vs `book_centered` (books named only as exclusions, or movies, shows and games instead of books, stay `bare_ask`).
+- It is the smallest class: 25 of 180 posts (13.9%), with only 4 examples in the test split, so its scores will vary a lot between runs.
+- The tie-break order for ambiguous posts is `template` > `book_centered` > `personal` > `bare_ask`, so `bare_ask` is the fallback when nothing else applies.
+
 
 ---
 
@@ -165,13 +174,19 @@ I labeled the first 30 to 40 and then AI finished the job.
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** distilbert-base-uncased
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** epochs: 3, learning rate: 0.00002, batch size: 16, seed: 42
 
 **Anything I changed from the defaults, and why:**
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
+**Split sizes:** 70% train, 15% validation, 15% test.
+Labels with less than 8 labels
+- 'template' has only 6 examples in the test split.
+- 'personal' has only 5 examples in the test split.
+- 'bare_ask' has only 4 examples in the test split.
+
+<!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
 
