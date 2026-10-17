@@ -192,6 +192,44 @@ After adding another 30 'template' posts to complete the 50 stretch mark:
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
 
+### Stretch Feature: Second training with more epochs
+
+**What changed:** I trained the model a second time (Run B) with 2 more epochs
+than the original run (Run A), `EPOCHS + 2`. The seed, learning rate, batch
+size, base model, and data splits were kept the same, so the number of epochs
+is the only difference between the runs.
+
+**Results on the held-out test set**
+
+| Metric                          | Run A (3 Epochs) | Run B (5 epochs)  |
+|---------------------------------|------------------|-------------------|
+| Accuracy                        | 0.667            | 0.667             |
+| Macro F1                        | 0.414            | 0.414             |
+| Accuracy, most-confident third  | 0.900            | 0.900             |
+| Accuracy, least-confident third | 0.500            | 0.300             |
+
+**What I observed:** Accuracy, macro F1, and the accuracy on the most-confident
+third did not change. The only difference was the accuracy on the
+least-confident third, which dropped from 0.500 to 0.300.
+
+**Interpretation**
+- Training longer did not improve the model on the metrics I tracked. The
+  extra epochs gave no gain in accuracy or macro F1.
+- The model is just as reliable when it is confident (0.900 in both runs). The
+  drop only affects the predictions it is least sure about.
+- The test set is small, so each third contains only a few posts. A drop from
+  0.500 to 0.300 is a difference of about two predictions. This is weak
+  evidence, and it may be noise rather than a real effect of the extra epochs.
+- A slightly worse least-sure third is consistent with the model fitting the
+  training data more closely without generalizing better. I did not verify
+  this, for example by comparing training and validation loss across epochs,
+  so I treat it as a possible explanation only.
+
+**Conclusion:** More epochs did not help here. The baseline (Run A) is the
+better choice because it performs the same with less training and is slightly
+better on the least-confident predictions. A larger test set or several seeds
+would be needed to say whether the drop is real.
+
 
 
 ---
@@ -217,7 +255,7 @@ of next unit's variance. -->
 - *What came back:* Feedback on why they were weak and possible redirection for those who lacked quantification or who did not make sense. It also pointed out some areas I did not consider beforehand (such as how accurance in the total model does not mean least-available label accuracy)
 - *What I changed:* I deleted many criterion and ended up designing the ones in this document
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** I labeled about 30 posts manually, and AI helped label the rest following the parameters.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
