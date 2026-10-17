@@ -123,12 +123,13 @@ I labeled the first 30 to 40 and then AI finished the job.
 
 **Counts per label:**
 
-| Label | Count | Share |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+|      Label    | Count | Share |
+|---------------|-------|-------|
+| book_centered |   84  | 46.7% |
+|    template   |   37  | 20.6% |
+|    personal   |   34  | 18.9% |
+|    bare_ask   |   25  | 13.9% |
+| **Total**     |  180  |  100% |
 
 **Three hard cases**
 
@@ -491,3 +492,8 @@ Row numbers are the position in `labels_template.csv` (1 = first row after the h
 - Row 26 (genres, "bored with what I'm reading") and row 98 (preference for math/science). Chose `bare_ask`.
 
 **Label balance:** 84 `book_centered` (46.7%), 37 `template` (20.6%), 34 `personal` (18.9%), 25 `bare_ask` (13.9%). All four are inside criterion 2's 10-50% range. The 20 extra `template` rows (161-180) are Goodreads-bot comments added by `rebalance.py`, and 40 `book_centered` rows were dropped by it, so the shares reflect that rebalancing and not the raw forum.
+
+## Labels Training:
+[note] 'template' has only 6 examples in the test split.
+[note] 'personal' has only 5 examples in the test split.
+[note] 'bare_ask' has only 4 examples in the test split.
