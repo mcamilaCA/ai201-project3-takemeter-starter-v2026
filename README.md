@@ -42,6 +42,8 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+TakeMeter looks at posts from an online book-recommendation forum (a Reddit-style community where people ask for something to read next), collected from a Kaggle dataset. Each post is sorted into one of four labels based on what the writer actually gives the community to work with: `template` (bot output or a bare list of links with no human writing), `book_centered` (names a specific book or author), `personal` (shares details about the writer's life, age or feelings but names no book), and `bare_ask` (a generic request with no book, no personal story and no bot formatting). The point is to tell how much usable context a request carries, so that a moderator or recommender could separate bot noise and vague asks from posts that are easy to answer.
+
 
 
 ---
@@ -137,25 +139,25 @@ I labeled the first 30 to 40 and then AI finished the job.
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* "Looking book I won't be able put down, during a process of grief... We lost our baby in a way that took a part of us with it. I now have a 4-6 week physical recovery time line... Some of my recent favorite reads this past year would [be] Educated, The boy who followed his father into the auschwitz, Secret sisters... I have just dove into Elenaor Oliphant is completely fine" (row 70; row 77, someone who just moved to Maryland and has read *Chesapeake Requiem*, is the same kind of case)
 >
-> *Could have been:*
+> *Could have been:* `personal` or `book_centered`
 >
-> *I chose, because:*
+> *I chose `book_centered`, because:* the post names specific books, and my decision rule says that any post naming a specific book or author is `book_centered`, however personal the rest of it is.
 
 **2.**
-> *The post:*
+> *The post:* "Books on Early Christianity... I'm not looking for Augustine, Origen, or other direct sources but easy to read historical books written by modern contemporaries." (row 30; row 55, which asks for books about female friendships "except Sisterhood of the Travelling Pants", is similar)
 >
-> *Could have been:*
+> *Could have been:* `book_centered` or `bare_ask`
 >
-> *I chose, because:*
+> *I chose `bare_ask`, because:* the authors are named only as things the writer does not want, not as something they read or liked, so the post is really a generic request.
 
 **3.**
-> *The post:*
+> *The post:* "I am looking for a book I read long ago that's on the tip of my tongue... a young teenage girl who works for a corporation that hunts ghost. The girl also uses a rapier... the characters go to a mansion that is haunted by a ghost, and eventually destroy him." (row 33; row 135 is similar)
 >
-> *Could have been:*
+> *Could have been:* `bare_ask` or `personal`
 >
-> *I chose, because:*
+> *I chose `bare_ask`, because:* the writer gives a plot description but no title, author or facts about themselves, so the post is a request with nothing named.
 
 ---
 
@@ -188,15 +190,15 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Feedback on my labels based on the data
+- *What came back:* A structured breakdown of why some of them were good, and which sections were weak
+- *What I changed:* I redefined the ones that needed more specificity, and worked on better understanding how to better tailor the labels to the test in the dataset
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Brainstorming session for the criterion based on my suggestions
+- *What came back:* Feedback on why they were weak and possible redirection for those who lacked quantification or who did not make sense. It also pointed out some areas I did not consider beforehand (such as how accurance in the total model does not mean least-available label accuracy)
+- *What I changed:* I deleted many criterion and ended up designing the ones in this document
 
 **Pre-labelling disclosure:**
 
