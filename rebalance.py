@@ -1,25 +1,27 @@
-"""Rebalance labels_template.csv so no label is >50% or <10%.
+"""Rebalance labels_template.csv to exactly 200 rows, no label >50% or <10%.
 
 Adds bot-style (template) rows from the full reddit pool and drops
 book_centered rows that mention a specific book title. Dry run by default;
 writes data/labels_balanced.csv and never touches labels_template.csv.
 
     python3 rebalance.py            # preview + write data/labels_balanced.csv
-    python3 rebalance.py --add 50 --drop 40 --seed 42
+    python3 rebalance.py --drop 23 --seed 42
 """
 import argparse
 import pandas as pd
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--add", type=int, default=50, help="template rows to add")
-ap.add_argument("--drop", type=int, default=40, help="book_centered rows to drop")
+ap.add_argument("--total", type=int, default=200, help="final number of rows")
+ap.add_argument("--drop", type=int, default=23, help="book_centered rows to drop")
 ap.add_argument("--seed", type=int, default=42)
 args = ap.parse_args()
 
 df = pd.read_csv("labels_template.csv")
+args.add = args.total - (len(df) - args.drop)  # template rows added to hit the total
 pool = pd.read_csv("data/reddit_booksuggestions.csv")
 
-# --- 1. template candidates: Goodreads-bot / automod comments not already used
+# --- 1. template candidates: Goodreads-bot / automod comments not alrea
+# dy used
 bot = r"^\[\*\*.+\]\(https://www\.goodreads\.com/book|^Your submission has been automatically removed"
 cand = pool[pool.body.fillna("").str.strip().str.contains(bot)].copy()
 cand["text"] = cand.body.str.strip()
@@ -29,6 +31,7 @@ cand = cand[cand.text.str.len() >= 200]  # same length floor as data_cleaning
 add = cand.sample(n=min(args.add, len(cand)), random_state=args.seed)
 new = pd.DataFrame({"text": add.text, "label": "template", "note": "added-bot"})
 print(f"template candidates available: {len(cand)}, adding {len(new)}")
+assert len(new) == args.add, "not enough template candidates to reach the total"
 
 # --- 2. book_centered rows to drop: ones that name a specific book/link
 # Hand-labelled ("cold") rows are kept.
@@ -43,6 +46,9 @@ short = args.drop - len(drop_idx)
 if short > 0:  # top up with the shortest remaining (least informative)
     drop_idx = drop_idx.append(rest.assign(n=rest.text.str.len()).nsmallest(short, "n").index)
 out = pd.concat([df.drop(drop_idx), new], ignore_index=True)
+assert len(out) == args.total, f"expected {args.total} rows, got {len(out)}"
+shares = out.label.value_counts(normalize=True)
+assert shares.between(0.10, 0.50).all(), f"label shares out of range:\n{shares}"
 
 def report(d, name):
     s = d.label.value_counts()
