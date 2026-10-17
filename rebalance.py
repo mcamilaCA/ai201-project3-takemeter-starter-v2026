@@ -5,13 +5,13 @@ book_centered rows that mention a specific book title. Dry run by default;
 writes data/labels_balanced.csv and never touches labels_template.csv.
 
     python3 rebalance.py            # preview + write data/labels_balanced.csv
-    python3 rebalance.py --add 20 --drop 40 --seed 42
+    python3 rebalance.py --add 50 --drop 40 --seed 42
 """
 import argparse
 import pandas as pd
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--add", type=int, default=20, help="template rows to add")
+ap.add_argument("--add", type=int, default=50, help="template rows to add")
 ap.add_argument("--drop", type=int, default=40, help="book_centered rows to drop")
 ap.add_argument("--seed", type=int, default=42)
 args = ap.parse_args()

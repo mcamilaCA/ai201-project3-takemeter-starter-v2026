@@ -186,6 +186,8 @@ Labels with less than 8 labels
 - 'personal' has only 5 examples in the test split.
 - 'bare_ask' has only 4 examples in the test split.
 
+After adding another 30 'template' posts to complete the 50 stretch mark:
+
 <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
@@ -468,49 +470,38 @@ AI201 environment check
 
 ## Hard cases (working notes)
 
-Row numbers are the position in `labels_template.csv` (1 = first row after the header, 180 rows). Rows 1-30 are `cold`, rows 31-180 are `pre-label`. Tie-break order used throughout: `template` > `book_centered` > `personal` > `bare_ask`.
+Row numbers are the position in `labels_template.csv` (1 = first row after the header, 200 rows). Rows 1-30 are `cold`, rows 31-200 are `pre-label`. Tie-break order used throughout: `template` > `book_centered` > `personal` > `bare_ask`.
 
 **1. Names a book AND tells a personal story** (`book_centered` vs `personal`)
-- Row 70: grief after losing a baby, with favorite reads listed. Row 77: just moved to Maryland, has read *Chesapeake Requiem*.
+- Row 4: a Brazilian aspiring author asking for books like *Lolita*. Row 82: grief after losing a baby, with favorite reads listed. Row 129: a 20-year-old who has re-read *Harry Potter* five times.
 - Chose `book_centered`: the rule is "names a specific book or author -> `book_centered`", however personal the rest is.
 
-**2. My cold labels vs. the rule** (`book_centered` vs `personal`, `personal` vs `bare_ask`)
-- Row 2, "I'm 17 and I don't want to be old": cold label `book_centered`, but it names no book, so the rule gives `personal`.
-- Row 4, "chill summertime vibe... Life is Strange": cold label `personal`, but *Life is Strange* is a game and the post gives no facts about the writer, so the rule gives `bare_ask`.
-- Both kept as my cold labels. Worth deciding whether the rule or the label should change.
+**2. A book named only to say the writer did not like it** (`book_centered` vs `bare_ask`)
+- Row 5 (reading *The Terminal List* and "it is just not for me") and row 175 (trigger warning for *Body Double*, "couldn't finish the book").
+- Chose `book_centered`: a named book is a named book, whether the writer liked it or not.
 
-**3. Books named only as exclusions** (`book_centered` vs `bare_ask`)
-- Row 30 (early Christianity, "not looking for Augustine, Origen") and row 55 (female friendships, "except Sisterhood of the Travelling Pants").
-- Chose `bare_ask`: the books are named as things the writer does not want, not as something they read or liked.
+**3. Movies, shows and other non-books** (`book_centered` vs `bare_ask`)
+- Row 21 ("Not a book, but two animated movies"), row 91 (*Attack on Titan*), row 109 (*Moxie*, which is also a book), row 155 (*Ferris Bueller*) and row 77 (James Bond / Ian Fleming, named only as inspiration).
+- Chose `bare_ask`: no book the writer read or liked is named.
 
-**4. A title that only shows up late in a long post** (`bare_ask` vs `book_centered`)
-- Row 24 opens as a generic request for a friendship book, but the last sentence asks for something "like The People We Meet on Vacation and/or Eleanor Oliphant is Completely Fine".
-- Chose `book_centered`. Reading only the start of the post would have given `bare_ask`.
-
-**5. Movies, shows and games instead of books** (`book_centered` vs `bare_ask`)
-- Rows 41 (*Body of Lies*), 51 (Rick and Morty), 88 (*Moxie*, which is also a book) and 145 (Avatar).
-- Chose `bare_ask`: no book or author is named.
-
-**6. "Help me find this book" with no title** (`bare_ask` vs `personal`)
-- Rows 33 and 135 describe a half-remembered plot but give no title.
+**4. "Help me find this book" with no title** (`bare_ask` vs `personal`)
+- Rows 18, 123 and 168 describe a half-remembered plot but give no title.
 - Chose `bare_ask`.
 
-**7. Comments about a book that is never named** (`bare_ask` vs `personal`)
-- Row 95 (discussing a plot and characters, no title): `bare_ask`. Row 84 ("I've always been kind of an outsider socially"): `personal`.
-- Decided by whether the writer states a fact about themselves.
+**5. Comments about a book that is never named** (`bare_ask` vs `personal`)
+- Row 117 (discussing the *Ellen* plot with no title), row 12 (waiting for the second book) and row 181 (loving the hotel in the book): `bare_ask`. Row 96 ("I've always been kind of an outsider socially"): `personal`.
+- Decided by whether the writer states a fact about themselves, not just an opinion about the book.
 
-**8. Lists of links with no writing** (`template` vs `book_centered`)
-- Row 19 is only Amazon links. Chose `template`, as "a list of links with no human writing". Row 92, the subreddit's automatic removal message, is also `template` because it is bot output.
+**6. Link lists and bot messages** (`template` vs `book_centered`)
+- Row 19 is only Amazon links, so it is `template` ("a list of links with no human writing"). Row 113, the subreddit's automatic removal message, is `template` because it is bot output.
 
-**9. Gift requests** (`personal` vs `bare_ask`)
-- Rows 10, 16, 44 and 63 ask for a gift or a shared read and give concrete details about the other person. Chose `personal`.
+**7. Requests on behalf of someone else** (`personal` vs `bare_ask`)
+- Rows 11 (cousin, 11th grade), 32 (10-year-old cousins), 46 (best friend's kindle) and 167 (a 50-year-old man getting back into reading) give concrete details about the other person and name no book. Chose `personal`.
 
-**10. Taste only, no facts about the writer** (`personal` vs `bare_ask`)
-- Row 26 (genres, "bored with what I'm reading") and row 98 (preference for math/science). Chose `bare_ask`.
+**8. Interest or taste only, no facts about the writer** (`personal` vs `bare_ask`)
+- Row 29 (poisons and toxins), row 92 (jellyfish) and row 94 (a beach read that is deep and sad). Chose `bare_ask`.
 
-**Label balance:** 84 `book_centered` (46.7%), 37 `template` (20.6%), 34 `personal` (18.9%), 25 `bare_ask` (13.9%). All four are inside criterion 2's 10-50% range. The 20 extra `template` rows (161-180) are Goodreads-bot comments added by `rebalance.py`, and 40 `book_centered` rows were dropped by it, so the shares reflect that rebalancing and not the raw forum.
+**9. Not really a request** (`personal` vs `bare_ask`)
+- Row 33 (a Reddit book-swap announcement) and row 152 (a comment about winter weather). Neither names a book. Chose `personal` because they describe what the writer is doing or where they live.
 
-## Labels Training:
-[note] 'template' has only 6 examples in the test split.
-[note] 'personal' has only 5 examples in the test split.
-[note] 'bare_ask' has only 4 examples in the test split.
+**Label balance:** 118 `book_centered` (59.0%), 31 `bare_ask` (15.5%), 30 `personal` (15.0%), 21 `template` (10.5%). `book_centered` is above criterion 2's 50% ceiling, and `template` is just above its 10% floor.
