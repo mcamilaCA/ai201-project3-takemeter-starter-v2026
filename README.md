@@ -186,7 +186,10 @@ Labels with less than 8 labels
 - 'personal' has only 5 examples in the test split.
 - 'bare_ask' has only 4 examples in the test split.
 
-After adding another 30 'template' posts to complete the 50 stretch mark:
+After adding another 30 'template' posts to complete the 50 stretch mark.
+
+## Stretch Feature:
+Added 50 posts instead of 30 of the least seen label (template)
 
 <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
