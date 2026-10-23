@@ -297,7 +297,13 @@ would be needed to say whether the drop is real.
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
+The baseline seemed to do better than the trained model. Diving deeper into each label this is what I could see:
+- `bare_ask` -> did better in the baseline. The trained model has a 0 F1, which means it never predicts bare_ask
+- `book_centered` -> roughly the same in baseline and trained model, baseline still outperforms trained by 0.016
+- `personal` -> just like `bare_ask`, it does better in the baseline and does not get predicted at all
+- `template`-> does significantly better on trained model. It went from a 0.545 in the baseline to 1.0 in training.
 
+Overall, finetunning the way I did did not improve the model, it mainly specialized the system to be good at detecting `template`.
 
 
 ---
