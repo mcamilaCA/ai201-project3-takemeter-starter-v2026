@@ -282,10 +282,12 @@ would be needed to say whether the drop is real.
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.633 | 0.667 | +0.033 |
+| Macro F1 | 0.533 | 0.432 | -0.101 |
+| F1 — `bare_ask` | 0.444 | 0.000 | -0.444 |
+| F1 — `book_centered` | 0.743 | 0.727 | -0.016 |
+| F1 — `personal` | 0.400 | 0.000 | -0.400 |
+| F1 — `template` | 0.545 | 1.000 | +0.455 |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
