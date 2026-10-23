@@ -23,7 +23,7 @@ Use the definitions on this page either way.
 **`analysis`** — makes an argument backed by a specific, checkable fact. A
 stat, a date, a time, a quote, a named comparison. The fact has to do work in
 the argument.
-
+https://codepath.slack.com/files/U05EL3A1L2C/F0CCM33PYE4/data_staff_labels.csv?origin_team=T0J064FCJ
 **`hot_take`** — a confident claim with no support offered. It might be true.
 It isn't argued. Strength of feeling is not support.
 
