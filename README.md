@@ -271,6 +271,14 @@ would be needed to say whether the drop is real.
 
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
+| Measure | Baseline |
+|---|---|
+| Overall accuracy | 0.633 |
+| Macro F1 | 0.533 |
+| F1 — `bare_ask` | 0.444 |
+| F1 — `book_centered` | 0.743 |
+| F1 — `personal` | 0.400 |
+| F1 — `template` | 0.545 |
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
@@ -282,6 +290,7 @@ would be needed to say whether the drop is real.
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+     I believe the label that will do the best is book_centered, and the one that will do the worst is personal, due to the occurrences in the dataset. If having in mind how stiff or flexible the definitions are, I believe template will do very well since it is a well defined structured, while both bare_ask and book_centered might get confused with and book centered since they are not mutually exclusive.  
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added

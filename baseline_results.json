@@ -1,0 +1,190 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.6333333333333333,
+    "f1_macro": 0.5331890331890332,
+    "per_label": {
+      "bare_ask": {
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444444444444445,
+        "support": 5
+      },
+      "book_centered": {
+        "precision": 0.6190476190476191,
+        "recall": 0.9285714285714286,
+        "f1": 0.742857142857143,
+        "support": 14
+      },
+      "personal": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1": 0.4,
+        "support": 4
+      },
+      "template": {
+        "precision": 0.75,
+        "recall": 0.42857142857142855,
+        "f1": 0.5454545454545454,
+        "support": 7
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Ran out of books\n\nI\u2019m a big fan of sci-fi and fantasy but I\u2019ve run out of books to read. I usually find something to new to read given enough time but I\u2019m not interested in waiting around for several months. Here\u2019s a list of series i\u2019ve already read and, for the most part, enjoyed.\n\nmistborn (including wax and wayne)\n\nwheel of time\n\nthe witcher \n\nThe black prism\n\nenders game\n\nthe Stormlight archive\n\nthe powdermage trilogy\n\ngods of blood and powder\n\nthe king killer chronicles \n\nthe first law trilogy\n\nthe faithful and the fallen\n\nthe lies of Locke lamora (1-3)\n\nelantris\n\nskyward ( and star sight)\n\nthere are a few more not listed but I\u2019m tired of typing. Let me know if you have any book suggestions. I prefer longer books and series.",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Books for young adult(20s) just starting to read for pleasure, reading skills not super strong\n\nMy friend (F, early 20s) is interested in starting to read for pleasure, as well as to increase her English vocabulary.\n\nHer English is strong but it is not her first language and her reading skills are not super strong. I don't think she's ever really read a book in English, TBH.\n\nI'd like to gift her with a series that is easily digestable and builds a love for reading. I am mostly looking at young adult books (which I love even though I'm old AF) but I don't want to be insulting by getting something that's clearly written for children.\n\nAny easy / fun series that would fit the bill?",
+      "gold": "personal",
+      "predicted": "bare_ask"
+    },
+    {
+      "text": "[**Staring at the Sun: Overcoming the Terror of Death**](https://www.goodreads.com/book/show/2062034.Staring_at_the_Sun)\n\n^(By: Irvin D. Yalom, \u0406\u0440\u0432\u0456\u043d \u042f\u043b\u043e\u043c | 306 pages | Published: 2008 | Popular Shelves: psychology, non-fiction, philosophy, nonfiction, death)\n\n>Written in Irv Yalom's inimitable story-telling style, Staring at the Sun is a profoundly encouraging approach to the universal issue of mortality. In this magisterial opus, capping a lifetime of work and personal experience, Dr. Yalom helps us recognize that the fear of death is at the heart of much of our anxiety. Such recognition is often catalyzed by an \"awakening experience\"--a dream, or loss (the death of a loved one, divorce, loss of a job or home), illness, trauma, or aging. Once we confront our own mortality, Dr. Yalom writes, we are inspired to rearrange our priorities, communicate more deeply with those we love, appreciate more keenly the beauty of life, and increase our willingness to take the risks necessary for personal fulfillment.\n\n^(This book has been suggested 20 times)\n\n***\n\n^(25342 books suggested | )[^(I don't feel so good.. )](https://debugger.medium.com/goodreads-is-retiring-its-current-api-and-book-loving-developers-arent-happy-11ed764dd95)^(| )[^(Source)](https://github.com/rodohanna/reddit-goodreads-bot)",
+      "gold": "template",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Night Gate by Isobelle Carmody has been really important to me for over a decade.\n\nRainbow in the Dark by Comfort Love and Adam Withers is also my favorite graphic novel of all time.  \n\n\nI have so many favorites but those are the two that ALWAYS come to mind first",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Modern books told from the POV of a kidnapper\n\nHi all, I'm looking for some good books that are told from the perspective of a kidnapper and have any level of depth to them. I'd prefer books where the kidnapper has a sort of attachment to the victim rather than the kind of impersonal hostage situations, but any suggestions are welcome. \n\nThank you in advance!",
+      "gold": "bare_ask",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "A YA contemporary book?\n\nHi, anyone got any recommendations for YA contemporary book that will preferably make me cry? Something similar to All the bright places or Perks of being a wallflower, if possible. (if you have more than one suggestion feel free to recomment as much as you can)\n\nThanks a lot",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "An easy read in Spanish about college students?\n\nHey hey! As the title says, I'm looking for something to help me internalize more Spanish vocab relevant to college/university life. Something set in a modern world with modern day-to-day language and slang. No genre preference, but I'd prefer something light-hearted :) \n\nThank you in advance, kind strangers!",
+      "gold": "personal",
+      "predicted": "personal"
+    },
+    {
+      "text": "German/Russian Thriller and Murder mystery\n\nLast year I read  ***Perfume: The Story of a Murderer*** by Patrick S\u00fcskind and it's still one of my all-time favorite murder mysteries. The novel emphasized the sense of smell and the emotional meanings surrounding it. I later came to learn that Jean Baptiste Grenouille was based on Manuel Blanco Romasanta, a Spanish serial killer.   \nI won't give any spoilers, but if anyone is interested in reading good murder mysteries, you can give it a try, it's a classic.  \nCan you guys recommend me more thrillers and murder mysteries by Russian and German writers?",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Books with flawed female protagonists with psychological emphasis i.e Gillian Flynn female main characters.\n\nSharp Objects and Dark Places blew my mind. Gritty, grounded, realistic portrayals of the struggling woman trying to find her way through life with emotional trauma.\n\nWhat are some authors who write these types of characters?\n\nNo female characters with the usual, \"look at me, I'm great and better than THAT man, amirite?!\" kinda garbage. \n\nThanks in advance.",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Okay I might get roasted for this but... have you ever read Twilight fanfiction? There's some good stuff out there lol. Sorry this isn't a book recommendation, but if you're going through Twilight withdrawal, fanfiction can help.",
+      "gold": "book_centered",
+      "predicted": "bare_ask"
+    },
+    {
+      "text": "For a non-reader (my cousin)\n\nMy cousin (who doesn\u2019t read actively) wants a book for Christmas. The book will be for pleasure as well as for school. He needs to write a book report for every chapter. \n\nGenre he wants is Murder/Mystery \nHe\u2019s in 11th grade\n\nThanks in advance",
+      "gold": "personal",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Ian Fleming initially intended James Bond to be a dull character to whom things just happened. Recommendations for books with main characters like that?\n\nI think the idea of having a completely dull main character is interesting! And challenging to do well.\n\nLooking for recommendations for a book where the character is basically just *there*. Someone completely boring and ordinary to whom things just seem to happen.",
+      "gold": "bare_ask",
+      "predicted": "template"
+    },
+    {
+      "text": "[**The Henna Wars**](https://www.goodreads.com/book/show/44286258-the-henna-wars)\n\n^(By: Adiba Jaigirdar | 400 pages | Published: 2020 | Popular Shelves: lgbtq, romance, contemporary, young-adult, lgbt)\n\n>When Dimple Met Rishi meets Simon vs. the Homo Sapiens Agenda in this rom com about two teen girls with rival henna businesses.\n>\n>When Nishat comes out to her parents, they say she can be anyone she wants\u2014as long as she isn\u2019t herself. Because Muslim girls aren\u2019t lesbians. Nishat doesn\u2019t want to hide who she is, but she also doesn\u2019t want to lose her relationship with her family. And her life only gets harder once a childhood friend walks back into her life.\n>\n>Fl\u00e1via is beautiful and charismatic and Nishat falls for her instantly. But when a school competition invites students to create their own businesses, both Fl\u00e1via and Nishat choose to do henna, even though Fl\u00e1via is appropriating Nishat\u2019s culture. Amidst sabotage and school stress, their lives get more tangled\u2014but Nishat can\u2019t quite get rid of her crush on Fl\u00e1via, and realizes there might be more to her than she realized.\n\n^(This book has been suggested 1 time)\n\n***\n\n^(25877 books suggested | )[^(I don't feel so good.. )](https://debugger.medium.com/goodreads-is-retiring-its-current-api-and-book-loving-developers-arent-happy-11ed764dd95)^(| )[^(Source)](https://github.com/rodohanna/reddit-goodreads-bot)",
+      "gold": "template",
+      "predicted": "template"
+    },
+    {
+      "text": "[**Killers of the Flower Moon: The Osage Murders and the Birth of the FBI**](https://www.goodreads.com/book/show/29496076-killers-of-the-flower-moon)\n\n^(By: David Grann | 359 pages | Published: 2017 | Popular Shelves: non-fiction, history, nonfiction, true-crime, book-club)\n\n>In the 1920s, the richest people per capita in the world were members of the Osage Indian Nation in Oklahoma. After oil was discovered beneath their land, the Osage rode in chauffeured automobiles, built mansions, and sent their children to study in Europe.Then, one by one, they began to be killed off. One Osage woman, Mollie Burkhart, watched as her family was murdered. Her older sister was shot. Her mother was then slowly poisoned. And it was just the beginning, as more Osage began to die under mysterious circumstances.In this last remnant of the Wild West\u2014where oilmen like J. P. Getty made their fortunes and where desperadoes such as Al Spencer, \u201cthe Phantom Terror,\u201d roamed \u2013 virtually anyone who dared to investigate the killings were themselves murdered. As the death toll surpassed more than twenty-four Osage, the newly created F.B.I. took up the case, in what became one of the organization\u2019s first major homicide investigations. But the bureau was then notoriously corrupt and initially bungled the case. Eventually the young director, J. Edgar Hoover, turned to a former Texas Ranger named Tom White to try to unravel the mystery. White put together an undercover team, including one of the only Native American agents in the bureau. They infiltrated the region, struggling to adopt the latest modern techniques of detection. Together with the Osage they began to expose one of the most sinister conspiracies in American history.A true-life murder mystery about one of the most monstrous crimes in American history.\n\n^(This book has been suggested 20 times)\n\n[**Endurance: Shackleton's Incredible Voyage**](https://www.goodreads.com/book/show/139069.Endurance)\n\n^(By: Alfred Lansing | 282 pages | Published: 1959 | Popular Shelves: non-fiction, history, nonfiction, adventure, biography)\n\n>The harrowing tale of British explorer Ernest Shackleton's 1914 attempt to reach the South Pole, one of the greatest adventure stories of the modern age.\n>\n>In August 1914, polar explorer Ernest Shackleton boarded the Endurance became locked in an island of ice. Thus began the legendary ordeal of Shackleton and his crew of twenty-seven men. When their ship was finally crushed between two ice floes, they attempted a near-impossible journey over 850 miles of the South Atlantic's heaviest seas to the closest outpost of civilization.\n>\n>In Endurance, the definitive account of Ernest Shackleton's fateful trip, Alfred Lansing brilliantly narrates the harrowing and miraculous voyage that has defined heroism for the modern age.\n\n^(This book has been suggested 17 times)\n\n***\n\n^(25578 books suggested | )[^(I don't feel so good.. )](https://debugger.medium.com/goodreads-is-retiring-its-current-api-and-book-loving-developers-arent-happy-11ed764dd95)^(| )[^(Source)](https://github.com/rodohanna/reddit-goodreads-bot)",
+      "gold": "template",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "[**Red Rising (Red Rising Saga, #1)**](https://www.goodreads.com/book/show/15839976-red-rising)\n\n^(By: Pierce Brown | 382 pages | Published: 2014 | Popular Shelves: sci-fi, science-fiction, fantasy, young-adult, fiction | )[^(Search \"Red Rising\")](https://www.goodreads.com/search?q=Red Rising&search_type=books)\n\n>\"I live for the dream that my children will be born free,\" she says. \"That they will be what they like. That they will own the land their father gave them.\"\n>\n>\"I live for you,\" I say sadly.\n>\n>Eo kisses my cheek. \"Then you must live for more.\"\n>\n>Darrow is a Red, a member of the lowest caste in the color-coded society of the future. Like his fellow Reds, he works all day, believing that he and his people are making the surface of Mars livable for future generations.\n>\n>Yet he spends his life willingly, knowing that his blood and sweat will one day result in a better world for his children.\n>\n>But Darrow and his kind have been betrayed. Soon he discovers that humanity already reached the surface generations ago. Vast cities and sprawling parks spread across the planet. Darrow\u2014and Reds like him\u2014are nothing more than slaves to a decadent ruling class.\n>\n>Inspired by a longing for justice, and driven by the memory of lost love, Darrow sacrifices everything to infiltrate the legendary Institute, a proving ground for the dominant Gold caste, where the next generation of humanity's overlords struggle for power. He will be forced to compete for his life and the very future of civilization against the best and most brutal of Society's ruling class. There, he will stop at nothing to bring down his enemies... even if it means he has to become one of them to do so.\n\n^(This book has been suggested 31 times)\n\n***\n\n^(23888 books suggested | )[^(I don't feel so good.. )](https://debugger.medium.com/goodreads-is-retiring-its-current-api-and-book-loving-developers-arent-happy-11ed764dd95)^(| )[^(Source)](https://github.com/rodohanna/reddit-goodreads-bot)",
+      "gold": "template",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Books for My Friend, a New Mom\n\nMy friend is pregnant. They've asked for books for the baby as baby shower gifts, and while I'm certainly going to do that, I also want to give my friend a book.\n\nI don't want it to be a parenting book. Ideally, a book of enduring friendship, or a book with parent characters if it's not actually about parenting. \n\nAs for her tastes, she reads a little of everything. She's a fan of Jodi Picoult and John Grisham, and I know she reads autobiographies, memoirs, and other nonfiction too. She doesn't read much fantasy. \n\nWhat would you suggest?",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Books that personify Death\n\nI\u2019ve read Terry Pratchett\u2019s Mort and Reaper Man etc. and I was looking for more books that focus on death as a person/the grim reaper. I\u2019ve also read scythe which was interesting and along the same lines. I was wondering if there were any other books that personify death/the grim reaper in this way. Books about hell/the afterlife that aren\u2019t heavily based in religion are welcome too!",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "If you don't usually read, not sure whether it's possible to just jump into a weird book and enjoy it...however, you know what you want!\n\nI'd say Jonathan Carroll's The Land of Laughs \\[btw - there are no laughs, it's bleak\\] is a weird book, I found it more and more disturbing as I read.",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "{{Toby Alone}} is age-appropriate, very well-written, is fantasy with an ecological message, has adventure, friendship, family, love. It also won awards for children's lit. I wholeheartedly recommend.",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Books like the cruel prince series\n\nI'm currently rlly loving the enemies to lovers stuff and can't find any I like quite as much as the cruel prince series. I think it's something about Cardan's personality that makes me love it so much. I tried Serpent and dove, the kingdom of the wicked, and dance of thieves but didn't love them nearly as much. Any suggestions? I also prefer young adults but if it's really good I'd read a normal adult as well. :)",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "I need book suggestions please.\n\nThis is a long shot. But When I read books (fantasy an fiction types) I've yet to read a book that has black  characters. Only time I've read books with black characters, the books are usually about slavery, or hard living, or being raised in the ghetto. I've yet to read a book where a black woman is being described  as a beautiful princess of a galaxy far far away or something fun. It's always something sad or bases on the past. Any advice on books that show black people in a different light more fantasy like?",
+      "gold": "bare_ask",
+      "predicted": "bare_ask"
+    },
+    {
+      "text": "Archeological mystery or thriller\n\nI\u2019m looking for a book for my bestie\u2019s birthday. She is studying abroad, getting her masters in archeology. I want this book to be an escape from studying/working so I was thinking a fiction book, maybe a mystery or a thriller, but I\u2019m open to nonfiction if you have a great recommendation. Bonus points if it focuses on Celtic/medieval material.\n\nThanks for your help fellow bookworms!",
+      "gold": "personal",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "[**Wyrd Sisters (Discworld, #6; Witches #2)**](https://www.goodreads.com/book/show/34504.Wyrd_Sisters)\n\n^(By: Terry Pratchett | 265 pages | Published: 1988 | Popular Shelves: fantasy, discworld, fiction, humor, terry-pratchett | )[^(Search \"Wyrd Sisters\")](https://www.goodreads.com/search?q=Wyrd Sisters&search_type=books)\n\n>Kingdoms wobble, crowns topple and knives flash on the magical Discworld as the statutory three witches meddle in royal politics. The wyrd sisters battle against frightful odds to put the rightful king on the throne. At least, that's what they think...\n\n^(This book has been suggested 2 times)\n\n***\n\n^(12289 books suggested | )[^(I don't feel so good.. )](https://debugger.medium.com/goodreads-is-retiring-its-current-api-and-book-loving-developers-arent-happy-11ed764dd95)^(| )[^(Source)](https://github.com/rodohanna/reddit-goodreads-bot)",
+      "gold": "template",
+      "predicted": "template"
+    },
+    {
+      "text": "Moxie - like books?\n\nI just finally watched Moxie and loved it and found out it's based on a book! I might read it, but because I just watched it, I want to read something like it but of which I don't know the story! Any suggestions??",
+      "gold": "bare_ask",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "Looking for thrillers/spy and military novels that understand the old writer's rule: show, don't tell\n\nExposition dumps are fine, even helpful to move an interesting or intricate plot along but I have been cringing at some lazy character development lately and I was wondering if anyone had any suggestions. The thing is, a character doesn't need to be that complex but overwrought is worse than underdeveloped, I find. I'm totally cool with archetypal character types, if that makes sense. \n\nI'm reading the Terminal List by Jack Carr right now and it is just not for me Every other sentence is 'Reece was the kind of guy everyone liked all the time and he's just really cool, ok?' It's exhausting. Some fine stuff in there if you're looking for a beachy read and I'm definitely going to finish it (more because I rarely DNF, the plotting is also a bit dumb), if you're planning on giving it a go, but be forewarned.\n\nBut yeah, like I said, good writing in a thriller or espionage setting. I feel like John Le Carre is going to come up, which is cool but I'm especially interested in more contemporary or lesser-known/indie writers I can follow as they publish!",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "{{The Thousand Autumns of Jacob De Zoet}} By David Mitchell\n\n{{Wolf Hall}} By Hilary Mantel\n\n{{A Tale of Two Cities}} By Charles Dickens\n\n{{\"I, Claudius \"}} By Robert Graves\n\n{{The Book of Negroes}} By Lawrence Hill\n\n{{The Leopard}} By Giuseppe di Lampedusa\n\n{{Alias Grace}} By Margaret Atwood\n\n{{Measuring the World}} By Daniel Kehlmann",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "[**The Long Way to a Small, Angry Planet (Wayfarers, #1)**](https://www.goodreads.com/book/show/22733729-the-long-way-to-a-small-angry-planet)\n\n^(By: Becky Chambers | 518 pages | Published: 2014 | Popular Shelves: sci-fi, science-fiction, fiction, scifi, lgbt)\n\n^(This book has been suggested 49 times)\n\n***\n\n^(25889 books suggested | )[^(I don't feel so good.. )](https://debugger.medium.com/goodreads-is-retiring-its-current-api-and-book-loving-developers-arent-happy-11ed764dd95)^(| )[^(Source)](https://github.com/rodohanna/reddit-goodreads-bot)",
+      "gold": "template",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "[**The Essential Feminist Reader**](https://www.goodreads.com/book/show/1702201.The_Essential_Feminist_Reader)\n\n^(By: Estelle B. Freedman, Christine de Pizan | 496 pages | Published: 2007 | Popular Shelves: feminism, non-fiction, nonfiction, feminist, essays)\n\n>Including: Susan B. Anthony, Simone de Beauvoir, W.E.B. Du Bois, H\u00e9l\u00e8ne Cixous, Betty Friedan, Charlotte Perkins Gilman, Emma Goldman, Guerrilla Girls, Ding Ling, Audre Lorde, John Stuart Mill, Christine de Pizan, Adrienne Rich, Margaret Sanger, Huda Shaarawi, Sojourner Truth, Mary Wollstonecraft, and Virginia Woolf.\n>\n>The Essential Feminist Reader is the first anthology to present the full scope of feminist history. Prizewinning historian Estelle B. Freedman brings decades of teaching experience and scholarship to her selections, which span more than five centuries. Moving beyond standard texts by English and American thinkers, this collection features primary source material from around the globe, including short works of fiction and drama, political manifestos, and the work of less well-known writers. \n>\n>Freedman\u2019s cogent Introduction assesses the challenges facing feminism, while her accessible, lively commentary contextualizes each piece. The Essential Feminist Reader is a vital addition to feminist scholarship, and an invaluable resource for anyone interested in the history of women.\n\n^(This book has been suggested 2 times)\n\n***\n\n^(25379 books suggested | )[^(I don't feel so good.. )](https://debugger.medium.com/goodreads-is-retiring-its-current-api-and-book-loving-developers-arent-happy-11ed764dd95)^(| )[^(Source)](https://github.com/rodohanna/reddit-goodreads-bot)",
+      "gold": "template",
+      "predicted": "template"
+    },
+    {
+      "text": "The only \u201cpsychological\u201d fiction books I\u2019ve read cover topics of mental illness and abuse. Many books in this genre are often not completely accurate representations of the Illnesses and often include dramatics or stereotypes. The best ones I\u2019ve read have younger characters. I enjoyed every last word, the perks of being a wallflower, some kind of happiness, OCD Daniel, challenger deep, Goldfish Boy, All the Bright Places, and some kind of happiness.",
+      "gold": "book_centered",
+      "predicted": "book_centered"
+    },
+    {
+      "text": "A book about colours\n\nI want to know everything about colours. The symbolism of every colour, their implications in art as well as in fashion, different ways to combine them. Also would be cool if such a book was written by a professional artist or art historian. Every suggestion is appreciated!",
+      "gold": "bare_ask",
+      "predicted": "bare_ask"
+    }
+  ]
+}

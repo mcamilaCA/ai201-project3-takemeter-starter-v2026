@@ -5,6 +5,7 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+template: The post is a bot output or a list of links with no human writing
+book_centered: The text is mainly about a specific book or author, either what the post writer liked or as a recomendation
+personal: The text is mainly about the writer's situations, age or feelings, names no specific book
+bare_ask: Generic request or reply with no named book, no personal story, and no bot formatting
