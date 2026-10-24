@@ -598,6 +598,16 @@ The only change made against the before section is the loss, the data, split set
 
 **Did it help, and how do I know:** It did help since `bare_ask` and `personal` now are predicted. However, they are not accurate predictions. I believe the next step to improve the model would be to add more posts belonging to `personal` and `bare_ask` post
 
+## Confidence Check - Stretch Feature 
+Adding a cell under "Confidence Check" in which the confidence numbers given in "evaluate()" are used. A table with teh information is created.
+
+### Reading instructions
+- > 10 = informative confidence
+- 0.03 - 0.10 = weak signal
+- < 0.03 = not informative confidence
+
+
+
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
