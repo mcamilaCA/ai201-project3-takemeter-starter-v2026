@@ -479,7 +479,8 @@ Some of them was due to not paying close attention to the post, and some others 
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** 
+1- Relabelled one boundary: personal & bare ask, since they both get confused due to writer sharing information about themselves while having a request format. 
 
 **Which diagnosis pointed at it:**
 
