@@ -502,11 +502,11 @@ Some of them was due to not paying close attention to the post, and some others 
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Per-label F1 | `template` F1 > 0.85; every other label F1 > 0.65 | template 0.933, book_centered 0.722, personal 0.000, bare_ask 0.000 | template 1.000, book_centered 0.757, personal 0.000, bare_ask 0.000 | template 0.923, book_centered 0.737, personal 0.000, bare_ask 0.000 | **MISSED** (template and book_centered pass; personal and bare_ask fail on all seeds) |
+| 2. Balance | No label above 50% or below 10% | book_centered 47.5%, template 22.0%, personal 15.5%, bare_ask 15.0% | same (dataset counts) | same | **MET** |
+| 3. Overall accuracy | ≥ 0.75 | 0.667 | 0.700 | 0.667 | **MISSED** |
+| 4. Beats baseline | Trained macro F1 ≥ baseline + 0.10 | 0.414 vs 0.533 (-0.119) | 0.439 vs 0.611 (-0.172) | 0.415 vs 0.589 (-0.174) | **MISSED** (trained is below baseline on all seeds; baseline not re-scored after the relabel) |
+| 5. Template recall | ≥ 0.70 | 1.000 | 1.000 | 0.857 | **MET** |
 
 
 #### Confusion Matrix
@@ -523,7 +523,7 @@ Some of them was due to not paying close attention to the post, and some others 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
 
-
+The change seemed to be too small to make a meaningful difference. The trained numbers were the same throughout the first and second run, hence, it did not help at all. The next step would be to add more of the labels that were not seen enough to learn them before. 
 
 ---
 
@@ -536,6 +536,16 @@ Some of them was due to not paying close attention to the post, and some others 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
+
+The system did not correctly predict book centered, since it shows that some were marked as `template`. Moreover, personal and bare ask were also mistakenly classified as `book_centered` instead of the right label. 
+#### Confusion Matrix
+
+| true \ predicted | template | book_centered | personal | bare_ask |
+|---|---|---|---|---|
+| **template** | 7 | 0 | 0 | 0 |
+| **book_centered** | 1 | 13 | 0 | 0 |
+| **personal** | 0 | 4 | 0 | 0 |
+| **bare_ask** | 0 | 5 | 0 | 0 |
 
 
 
