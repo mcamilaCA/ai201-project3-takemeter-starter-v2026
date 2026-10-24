@@ -484,7 +484,7 @@ Some of them was due to not paying close attention to the post, and some others 
 **What I changed:** 
 1- Relabelled one boundary: personal & bare ask, since they both get confused due to writer sharing information about themselves while having a request format. 
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** The labels were not detected accurately, so I decided to revise them and show a better boundary. 
 
 ### Run Log — After
 
@@ -547,6 +547,56 @@ The system did not correctly predict book centered, since it shows that some wer
 | **personal** | 0 | 4 | 0 | 0 |
 | **bare_ask** | 0 | 5 | 0 | 0 |
 
+
+
+
+## The Improvement - Stretch Feature 
+
+**What I changed:** 
+Adding class-weighted loss
+
+**Which diagnosis pointed at it:** Since the  model does not predict `personal` and `bare_ask` labels, I decided to use weighted-class loss instead of adding new data. 
+I considered adding new data, but thst would mean either retraining and comparing again against base model to have a ground truth that is accurate with the new data, or to simply compare it as it is without having a good parameter to compare it to (since the old data would not have the same dataset as the new one). 
+The way this approach works is by weightiung the loss by the inverse of each labvel's frequency, whcih makes a miss on a small label to be costly and hence pay more attention to it. 
+
+The only change made against the before section is the loss, the data, split settings, seed, epochs, learning rate, batch size, and base model stay the same.
+
+
+### Run Log — After
+
+#### Measures
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.433 | 0.700 | 0.467 | 0.267 |
+| Macro F1 | 0.352 | 0.553 | 0.470 | 0.201 |
+| F1 — `template` | 0.875 | 0.933 | 0.750 | 0.183 |
+| F1 — `book_centered` | 0.133 | 0.733 | 0.333 | 0.600 |
+| F1 — `personal` | 0.000 | 0.000 | 0.353 | 0.353 |
+| F1 — `bare_ask` | 0.400 | 0.545 | 0.444 | 0.145 |
+
+
+#### Criterion Analysis
+
+| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+|---|---|---|---|---|---|
+| 1. Per-label F1 | `template` F1 > 0.85; every other label F1 > 0.65 | template 0.875, book_centered 0.133, personal 0.000, bare_ask 0.400 | template 0.933, book_centered 0.733, personal 0.000, bare_ask 0.545 | template 0.750, book_centered 0.333, personal 0.353, bare_ask 0.444 | **MISSED** (worse than before: `template` now fails on seed 2024 and `book_centered` fails on all seeds; `bare_ask` is now predicted but stays below 0.65) |
+| 2. Balance | No label above 50% or below 10% | book_centered 47.5%, template 22.0%, personal 15.5%, bare_ask 15.0% | same (dataset counts) | same | **MET** |
+| 3. Overall accuracy | ≥ 0.75 | 0.433 | 0.700 | 0.467 | **MISSED** (down from 0.667 / 0.700 / 0.667 on seeds 42 and 2024) |
+| 4. Beats baseline | Trained macro F1 ≥ baseline + 0.10 | 0.352 vs 0.533 (-0.181) | 0.553 vs 0.611 (-0.058) | 0.470 vs 0.589 (-0.119) | **MISSED** (still below baseline on all seeds, though seed 7 is close; baseline not re-scored after the relabel) |
+| 5. Template recall | ≥ 0.70 | 1.000 | 1.000 | 0.857 | **MET** |
+
+
+#### Confusion Matrix
+
+| true \ predicted | template | book_centered | personal | bare_ask |
+|---|---|---|---|---|
+| **template** | 7 | 0 | 0 | 0 |
+| **book_centered** | 2 | 1 | 0 | 11 |
+| **personal** | 0 | 0 | 0 | 4 |
+| **bare_ask** | 0 | 0 | 0 | 5 |
+
+**Did it help, and how do I know:** It did help since `bare_ask` and `personal` now are predicted. However, they are not accurate predictions. I believe the next step to improve the model would be to add more posts belonging to `personal` and `bare_ask` post
 
 
 <!-- ═════════════════════════════════════════════════════════════════════
