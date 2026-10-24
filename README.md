@@ -473,8 +473,10 @@ C)
 > *Which pile:*
 C)
 
-**What the pattern in my disagreements tells me:**
+**What the pattern in my disagreements tells me:** 
 Some of them was due to not paying close attention to the post, and some others (I believe majority) were debatable positions.. which showcase once again, that there is always space for debate in taxonomies
+
+
 ---
 
 ## The Improvement
@@ -486,6 +488,18 @@ Some of them was due to not paying close attention to the post, and some others 
 
 ### Run Log — After
 
+#### Measures
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.667 | 0.700 | 0.667 | 0.033 |
+| Macro F1 | 0.414 | 0.439 | 0.415 | 0.025 |
+| F1 — `template` | 0.933 | 1.000 | 0.923 | 0.077 |
+| F1 — `book_centered` | 0.722 | 0.757 | 0.737 | 0.035 |
+| F1 — `personal` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `bare_ask` | 0.000 | 0.000 | 0.000 | 0.000 |
+
+#### Criterion Analysis
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
 | 1.  |  |  |  |  |  |
@@ -493,6 +507,16 @@ Some of them was due to not paying close attention to the post, and some others 
 | 3.  |  |  |  |  |  |
 | 4.  |  |  |  |  |  |
 | 5.  |  |  |  |  |  |
+
+
+#### Confusion Matrix
+
+| true \ predicted | template | book_centered | personal | bare_ask |
+|---|---|---|---|---|
+| **template** | 7 | 0 | 0 | 0 |
+| **book_centered** | 1 | 13 | 0 | 0 |
+| **personal** | 0 | 4 | 0 | 0 |
+| **bare_ask** | 0 | 5 | 0 | 0 |
 
 **Did it help, and how do I know:**
 
