@@ -315,11 +315,13 @@ Overall, finetunning the way I did did not improve the model, it mainly speciali
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Per-label F1 | `template` F1 > 0.85; every other label F1 > 0.65 | template 0.933, book_centered 0.722, personal 0.000, bare_ask 0.000 | template 1.000, book_centered 0.757, personal 0.000, bare_ask 0.000 | template 0.923, book_centered 0.737, personal 0.000, bare_ask 0.000 | **MISSED** (template and book_centered pass; personal and bare_ask fail on all seeds) |
+| 2. Balance | No label above 50% or below 10% | book_centered 47.5%, template 22.0%, bare_ask 15.5%, personal 15.0% | same (the counts belong to the dataset, not the split) | same | **MET** |
+| 3. Overall accuracy | ≥ 0.75 | 0.667 | 0.700 | 0.667 | **MISSED** |
+| 4. Beats baseline | Trained macro F1 ≥ baseline + 0.10 | 0.414 vs 0.533 (-0.119) | 0.439 vs 0.611 (-0.172) | 0.415 vs 0.589 (-0.174) | **MISSED** (trained is below baseline on all seeds) |
+| 5. Template recall | ≥ 0.70 | 1.000 | 1.000 | 0.857 | **MET** |
+
+Spread across seeds: accuracy 0.033, macro F1 0.025. Stable enough to trust. The three-seed run used seeds 42, 7 and 2024 on Apple Silicon (MPS), torch 2.14.1. The baseline for seeds 7 and 2024 was scored with `baseline.py` on those seeds' own test splits, rebuilt with the notebook's `split_dataset`.
 
 ### Confusion matrix
 
@@ -350,13 +352,23 @@ Biggest off diagonal: 5. In this case, it shows that template labels were most t
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Per-label F1 | `template` F1 > 0.85, every other label > 0.65 | **MISSED** | `template` (0.933 / 1.000 / 0.923) and `book_centered` (0.722 / 0.757 / 0.737) held on all three seeds. `personal` and `bare_ask` scored 0.000 on every seed, so the criterion fails as a whole. |
+| 2 | Balance | No label above 50% or below 10% | **MET** | Counts in `data/labels.csv`: book_centered 95 (47.5%), template 44 (22.0%), bare_ask 31 (15.5%), personal 30 (15.0%). The largest label is just under the ceiling and the smallest is well above the floor. |
+| 3 | Overall accuracy | ≥ 0.75 | **MISSED** | 0.667, 0.700, 0.667. Even the best seed is 0.05 short. |
+| 4 | Beats baseline | Macro F1 ≥ baseline + 0.10 on all seeds | **MISSED** | Trained was below the zero-shot baseline on every seed: -0.119, -0.172, -0.174. Needed +0.10. |
+| 5 | Template recall | ≥ 0.70 on every seed | **MET** | 1.000, 1.000, 0.857 (6 of 7 on seed 2024). |
 
 **Diagnoses**
+
+**Criteria 1, 3 and 4 share one cause: the model never predicts `personal` or `bare_ask`.** The confusion matrix (seed 42) shows all 4 real `personal` posts and all 5 real `bare_ask` posts called `book_centered`, and nothing was ever predicted as either label. Those 9 posts out of 30 are why accuracy tops out near 0.70 and why macro F1 sits near 0.42: two of the four labels contribute 0.
+- *Too few examples.* `personal` and `bare_ask` have only about 21 to 22 training examples each, against 66 for `book_centered`. With 3 epochs the model still had a validation loss near 1.0, and its safest guess was the biggest label. Run B (5 epochs) gave identical accuracy and macro F1, so more epochs alone did not fix it. The test split has only 4 and 5 posts for these labels, so one more correct prediction would move their F1 a lot. Even so, 0 across three seeds is not noise.
+- *A genuinely hard boundary.* The boundaries these two labels sit on are the hardest ones in my taxonomy: `bare_ask` vs `book_centered` (books named only as exclusions, or movies and shows) and `personal` vs `book_centered` (a book plus a personal story). My decision rule resolves them by tie-break order, which leaves `personal` and `bare_ask` as the fallbacks. A model with little data has no easy surface feature for a fallback class.
+- *Agreement report as evidence, with a limit.* The agreement check used the staff taxonomy (`analysis`, `hot_take`, `reaction`), not mine, so it cannot say directly whether my own `personal` and `bare_ask` labels are consistent. What it does show is how I handle a judgement-call boundary: I agreed on 24 of 30 (80%), and none of the 6 disagreements were on clear cases. 2 were pile (a) (I read the post's closing sentence and ignored the evidence, a consistency problem). 4 were pile (c) (a defensible reading of an ambiguous rule). If I applied a written rule loosely on 2 of 30 posts, I probably did the same on some of my own 200, and AI labelled most of those, so I cannot rule out a labelling problem on `personal` vs `bare_ask`. The baseline reaches F1 0.40 to 0.67 on these two labels from the definitions alone, so the labels are learnable by something. The model just did not learn them from 21 examples.
+
+**Criterion 4 in particular.** The zero-shot baseline uses my definitions directly, so it does not need training examples for the small labels. The fine-tuned model only beat it on `template` (F1 1.000 vs 0.545 on seed 42), the one label with a visible structure and plenty of examples (44). On a 200-row dataset with 4 labels, fine-tuning DistilBERT specialised on `template` and `book_centered` and ignored the rest. The task may be out of reach for this model from this much data.
+
+**Criteria 2 and 5 were met** and need no diagnosis. A note on criterion 5: `template` is 22.0% of `data/labels.csv`, not the roughly 9% I assumed when I wrote the criterion, which made it easier to hit.
+
 
 <!-- For each miss: the cause, and how you know. The four common causes are:
      too few examples for a label, a boundary you applied inconsistently, a
