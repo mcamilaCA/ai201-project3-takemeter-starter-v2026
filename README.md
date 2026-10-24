@@ -326,17 +326,19 @@ Overall, finetunning the way I did did not improve the model, it mainly speciali
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted | template | book_centered | personal | bare_ask |
+|---|---|---|---|---|
+| **template** | 7 | 0 | 0 | 0 |
+| **book_centered** | 1 | 13 | 0 | 0 |
+| **personal** | 0 | 4 | 0 | 0 |
+| **bare_ask** | 0 | 5 | 0 | 0 |
+
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
-
+Biggest off diagonal: 5. In this case, it shows that template labels were most times confused with book_centered. Hence, the model did not learn to distinguish correctly between book centered posts and posts that act as petitions. 
 
 
 ---
@@ -377,7 +379,7 @@ Overall, finetunning the way I did did not improve the model, it mainly speciali
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** __24/ 30 = 80%__%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -401,26 +403,66 @@ Overall, finetunning the way I did did not improve the model, it mainly speciali
 
 **1.**
 > *The post:*
->
+> "The club championship scoring changed in 2019 from top-6 to top-10. Since then our B team has finished above the A team twice. That's not depth improving, it's the scoring rewarding turnout."
 > *Staff said / I said:*
->
+> `analysis` | `hot_take` 
 > *My call, and why:*
->
+>  I said it was a hot take since I focused on the second half "that's not depth improving, it's the scoring rewarding turnout." and kidn of ignored the statistics and thought of them as "decor"
 > *Which pile:*
+A)
 
 **2.**
 > *The post:*
->
+> "Everyone blames the hill at 18 miles. I split the field into people who ran the first half under 1:45 and over, and the slowdown after 18 was almost identical for both groups. If the hill were the problem the fast starters would fall apart harder."
 > *Staff said / I said:*
->
+> `analysis` | `hot_take` 
 > *My call, and why:*
->
+> Again, I focused too much on the last section in which it tried to point fingers instead of focusing on an objective statement.
 > *Which pile:*
+A)
+
+**3.**
+> *The post:*
+> "Carbon plates aren't the whole story. My times dropped 2% in the shoes and another 2% the following year in the same pair, when the only thing that changed was going from 35 to 50 miles a week."
+> *Staff said / I said:*
+> `analysis` | `hot_take`
+> *My call, and why:*
+> I believe it was not an analysis since it is speaking of sort of a personal situation which does not mean that can apply to everyone that changes shoes. I still stand by my opinon
+> *Which pile:*
+C)
+
+**4.**
+> *The post:*
+> "Ran the same loop in 4C and in 24C within a fortnight, same effort by heart rate. 90 seconds slower in the heat over six miles. People keep saying heat costs you 'a bit' and it's more than that."
+> *Staff said / I said:*
+> `analysis` | `reaction`
+> *My call, and why:*
+> The post talks mainly of first experience, and even though it provides a number, it is still a number based on a single person situation and their reflection afterwards, for which I consider it a reaction instead of an analysis
+> *Which pile:*
+C)
+
+**5.**
+> *The post:*
+> "Went back through the club results going back to 2012. Every single year the number of people who enter the spring marathon and don't start it sits between 18 and 23 percent. It's not a bad-luck year, it's the base rate."
+> *Staff said / I said:*
+> `analysis` | `hot_take` 
+> *My call, and why:*
+> I did not focus on the statistic showed in the post and hence, did not classify it correctly
+> *Which pile:*
+C)
+
+**6.**
+> *The post:*
+> "Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people."
+> *Staff said / I said:*
+> `analysis` | `reaction`
+> *My call, and why:*
+> My call is a reaction since, again, it is based on a small trial amongs maybe friens, and a conclusion which was drawn from that experience. I do not consider it to be an analysis, moreover, the conclusion is a bit personalized and tailored to the situation itself, which is why I still believe it is a reaction
+> *Which pile:*
+C)
 
 **What the pattern in my disagreements tells me:**
-
-
-
+Some of them was due to not paying close attention to the post, and some others (I believe majority) were debatable positions.. which showcase once again, that there is always space for debate in taxonomies
 ---
 
 ## The Improvement
