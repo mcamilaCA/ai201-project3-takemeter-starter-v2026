@@ -606,8 +606,17 @@ Adding a cell under "Confidence Check" in which the confidence numbers given in 
 - 0.03 - 0.10 = weak signal
 - < 0.03 = not informative confidence
 
+## Per-Laber Write-Up - Stretch Feature
+Adding a cell that names the label the model fails on most based on the confusion matrix, then re-trains the first seed
+so it can see *which* posts were missed, and prints each one with what the model called it and how sure it was. 
 
+#### Output:
+Worst label: `bare_ask`   (seed 42)
+  precision 0.000   recall 0.000   F1 0.000   support 5
+  0 of 4 real `bare_ask` posts caught.
 
+Where the missed `bare_ask` posts went:
+  4 -> `book_centered`
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
